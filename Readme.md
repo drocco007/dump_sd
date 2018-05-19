@@ -26,7 +26,7 @@ the block number.
 
 * Arduino Core & Arduino Makefile. On Ubuntu,
 
-    sudo apt-get install arduino-core arduino-mk
+      $ sudo apt-get install arduino-core arduino-mk
 
 * Arduino Uno attached to `/dev/ttyACM0`
 * [SD card shield](http://www.microcenter.com/product/476328/SD_Card_Logging_Shield_-_2_Pack)
