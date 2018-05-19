@@ -16,6 +16,10 @@ void setup()
         Serial.print("Status code: 0x");
         Serial.println(card.errorData(), HEX);
         Serial.println("");
+
+        // Several of my cards reported errors here but then worked fine, so
+        // let's keep going. If the card is unreadable, it will report 0
+        // blocks of capacity below.
     }
 
     Serial.print("Card type: 0x");
@@ -27,6 +31,7 @@ void setup()
     Serial.println(blocks);
 
     Serial.println("");
+    Serial.println("begin");
 
     uint8_t data[512];
     char encoded[344];
@@ -37,6 +42,8 @@ void setup()
             Serial.print("Error reading block ");
             Serial.println(blockNumber);
         } else {
+            // The Uno doesn't have enough RAM to base64 encode the entire
+            // 512B data block, so split it in two.
             p = (char *) data;
 
             while (p < data + 512) {
